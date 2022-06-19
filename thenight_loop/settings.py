@@ -29,16 +29,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ROOT_URLCONF = 'thenight_loop.urls'
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
+    'crispy_forms',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -121,11 +127,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 
 LOGIN_REDIRECT_URL = 'index'
@@ -144,6 +152,8 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DJANGORESIZED_DEFAULT_SIZE = [500, 500]
 DJANGORESIZED_DEFAULT_QUALITY = 75

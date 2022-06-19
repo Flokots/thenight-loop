@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&family=Nuosu+SIL&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque&family=IBM+Plex+Mono:wght@200&family=Nuosu+SIL&display=swap');
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -52,22 +52,16 @@
 }
 
 .bg-blue {
-    background-color: #010322;
+  background-color: #010322;
 }
+
+
+
 body {
-  background-color: #0a2f35;
-  color: #ffffff;
-  font-family: 'Nuosu SIL', serif!important;
+  font-family: 'Nuosu SIL', serif !important;
   font-size: 1.5em;
 }
 
-.album-lead {
-  color: #f56038;
-}
-
-.album-card {
-  background-color: #12492f;
-}
 
 .account-img {
   height: 125px;
@@ -87,12 +81,66 @@ body {
   display: block;
 }
 
-.text-mutedi {
-  color: #ffca7a;
-}
 
 .project-img {
   height: 55px;
   width: 55px;
   margin-right: 16px;
+}
+
+
+.masthead {
+  position: relative;
+  left: 0px;
+  background: url(../assets/site-images/guard.webp);
+  border-top: 1px solid #181B57;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+}
+
+.background-overlay {
+  background-color: transparent;
+  background-image: linear-gradient(180deg,
+      #010322 0%,
+      #010322 100%);
+  opacity: 0.9;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+.content {
+  height: 140px;
+  left: 279px;
+  top: 125px;
+  font-family: 'Darker Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 43px;
+  text-align: center;
+  color: #A1A7C2;
+  padding-top: 5em;
+  padding-bottom: 7em;
+}
+
+
+.hp-button {
+  margin-top: 2em;
+  height: 37px;
+  background: #0624C8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  font-family: 'IBM Plex Serif';
+  font-style: normal;
+
+}
+
+.button1:hover {
+  background-color: #010322;
+  color: #A1A7C2;
+  border-color: #0624C8;
+  transition: 0.7s;
 }

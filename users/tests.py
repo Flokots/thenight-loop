@@ -8,7 +8,7 @@ class ProfileTestClass(TestCase):
         # Set up method
     def setUp(self):
         self.new_user = User(id=1, username='new_user')
-        self.new_profile = Profile(id=1, bio='Test Bio', image='../media/profile_pics/ruby.jpg', user=self.new_user)
+        self.new_profile = Profile(id=1, bio='Test Bio', image='../media/default_user.jpg', user=self.new_user)
 
     def tearDown(self):
         User.objects.all().delete()

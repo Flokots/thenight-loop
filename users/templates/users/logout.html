@@ -2,14 +2,23 @@
 
 {% block content %}
 {{block.super}}
-<body style="color: #f56038; background-color: #0a2f35;">
+
+<body class="lo-body">
     <div class="container">
-        <h2 class="pt-3 text-center">You have been Logged Out </h2>
-        <div class="border-top pt-3 mb-4  text-center">
-            <small class="text-muted">
-             <a clas="ml-2" href="{% url 'login' %}" style="color:#ffca7a;"> Log In Again</a>
-            </small>
-         </div>
+        <div class="darker-div">
+            <div class="row py-lg-5">   
+                <div class="col-3">
+                    <img src="../../../static/assets/site-images/logout.svg" alt="logout"
+                        style="height: 300px; width: 300px">
+                </div>
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h2>You have been logged out!</h2>
+                    <div>
+                        <a class="ml-2 btn btn-outline-info" href="{% url 'login' %}"> Log In Again</a>
+                    </div>
+                 </div>
+            </div>
+        </div>
     </div>
 </body>
 

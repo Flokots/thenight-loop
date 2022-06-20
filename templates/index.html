@@ -38,7 +38,7 @@
         {% if posts %}
         {% for post in posts %}
         <!--To be checked out -->
-        {% if post.neighborhood == user.neighborhood %}
+        {% if post.neighborhood == user.profile.neighborhood %}
         <div class="article-card">
           <article class="media content-section">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">

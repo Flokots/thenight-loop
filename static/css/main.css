@@ -154,5 +154,9 @@ body {
   background-color: #010322;
   margin: 2em;
   color:#0624C8;
-  padding: 2em;
+  padding: 1em;
+}
+
+.form-div {
+  margin-top: 0px;
 }

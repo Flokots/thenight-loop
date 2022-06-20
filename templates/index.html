@@ -33,10 +33,11 @@
   <body class="lo-body">
     <div class="container">
       <div class="darker-div">
-        {% if posts %}
         <h2>Recent Neighbourhood Posts</h2>
         <hr/>
         {% for post in posts %}
+        <!--To be checked out -->
+        {% if post.author.neighborhood == user.neighborhood %}
         <div class="article-card">
           <article class="media content-section">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -50,8 +51,8 @@
             </div>
           </article>
         </div>
-        {% endfor %}
         {% endif %}
+        {% endfor %}
       </div>
     </div>
   </body>

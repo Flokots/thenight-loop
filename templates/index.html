@@ -34,10 +34,11 @@
     <div class="container">
       <div class="darker-div">
         <h2>Recent Neighbourhood Posts</h2>
-        <hr/>
+        <hr />
+        {% if posts %}
         {% for post in posts %}
         <!--To be checked out -->
-        {% if post.author.neighborhood == user.neighborhood %}
+        {% if post.neighborhood == user.neighborhood %}
         <div class="article-card">
           <article class="media content-section">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -53,6 +54,7 @@
         </div>
         {% endif %}
         {% endfor %}
+        {% endif %}
       </div>
     </div>
   </body>

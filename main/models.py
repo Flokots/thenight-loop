@@ -52,7 +52,7 @@ class Business(models.Model):
 
     # Related Fields
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True, blank=True)
     business_image = ResizedImageField(size=[1000, 1000], crop=['middle', 'center'], default='default_business.jpg', upload_to='business_images')
 
     # Utility Variables
@@ -87,6 +87,7 @@ class Post(models.Model):
     description = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True, blank=True)
 
     post_image = ResizedImageField(size=[1000, 1000], crop=['middle', 'center'], default='default_post.jpg', upload_to='posts')
 
@@ -125,6 +126,8 @@ class Contact(models.Model):
     email_address = models.EmailField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True, blank=True)
+
 
     # Utility Variables
     uniqueId = models.CharField(null=True, blank=True, max_length=100)

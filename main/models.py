@@ -5,7 +5,7 @@ from django.utils import timezone
 from uuid import uuid4
 from django.urls import reverse
 from django.contrib.auth.models import User
-
+from PIL import Image
 
 class Neighborhood(models.Model):
     name = models.CharField(null=True, blank=True, max_length=200)
@@ -81,4 +81,38 @@ class Business(models.Model):
         self.last_updated = timezone.localtime(timezone.now())
         super(Business, self).save(*args, **kwargs)
 
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    date_posted = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    post_image = ResizedImageField(size=[1000, 1000], crop=['middle', 'center'], default='default_post.jpg', upload_to='posts')
+
+    # Utility Variables
+    uniqueId = models.CharField(null=True, blank=True, max_length=100)
+    slug = models.SlugField(max_length=500, unique=True, blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    last_updated = models.DateTimeField(blank=True, null=True)
+ 
+   
+    def __str__(self):
+        return '{} {}'.format(self.title, self.uniqueId)
+
+    
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if self.date_created is None:
+            self.date_created = timezone.localtime(timezone.now())
+        
+        if self.uniqueId is None:
+            self.uniqueId = str(uuid4()).split('-')[4]
+            self.slug = slugify('{} {}'.format(self.title, self.uniqueId))
+
+        self.slug = slugify('{} {}'.format(self.title, self.uniqueId))
+        self.last_updated = timezone.localtime(timezone.now())
+        super(Post, self).save(*args, **kwargs)
 

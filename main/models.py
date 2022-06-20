@@ -1,12 +1,9 @@
-from email.policy import default
-from msilib.schema import ReserveCost
 from django.db import models
 from django_resized import ResizedImageField
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 from uuid import uuid4
 from django.urls import reverse
-from PIL import Image
 from django.contrib.auth.models import User
 
 
@@ -16,8 +13,8 @@ class Neighborhood(models.Model):
     occupants_count = models.IntegerField()
 
     #Image
-    image = ResizedImageField(size=[1000, 1000], crop=['middle', 'center'], default='default_hood.jpg', upload_to='hood_images')
-    
+    hood_image = ResizedImageField(size=[1000, 1000], crop=['middle', 'center'], default='default_hood.jpg', upload_to='hood_images')
+
     # Related Field
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -27,9 +24,7 @@ class Neighborhood(models.Model):
     date_created = models.DateTimeField(blank=True, null=True)
     last_updated = models.DateTimeField(blank=True, null=True)
  
-    #Image
-    hood_image = ResizedImageField(size=[1000, 1000], crop=['middle', 'center'], default='default_hood.jpg', upload_to='hood_images')
-
+   
     def __str__(self):
         return '{} {}'.format(self.name, self.uniqueId)
 

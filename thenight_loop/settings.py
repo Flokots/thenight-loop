@@ -36,6 +36,7 @@ ROOT_URLCONF = 'thenight_loop.urls'
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
+    'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

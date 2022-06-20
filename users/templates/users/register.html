@@ -4,20 +4,33 @@
 {% block content %}
 {{block.super}}
 
-<div class="container">
-    <form method="POST" class="pt-3"> 
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4 pt-3">Register</legend>
-            {{ form|crispy}}
-            <button class="btn btn-outline-info mb-3 mt-3" type="submit">Register</button>
-        </fieldset>
-    </form>
-    <div class="border-top pt-3 mb-4">
-       <small class="text-muted">
-        Already Have an Account? <a clas="ml-2" href="{% url 'login' %}"> Sign In</a>
-       </small>
+<body class="lo-body">
+    <div class="container">
+        <div class="darker-div">
+            <div class="row py-lg-5">
+                <div class="col-3 d-none d-lg-block">
+                    <img src="../../../static/assets/site-images/login.svg" alt="logout"
+                        style="height: 300px; width: 300px">
+                </div>
+                <div class="col-2"></div>
+                <div class="form-div col-lg-6 col-md-8 mx-auto">
+                    <form method="POST" class="pt-3"> 
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4 pt-3">Register</legend>
+                            {{ form|crispy}}
+                            <button class="btn btn-outline-info mb-3 mt-3" type="submit">Register</button>
+                        </fieldset>
+                    </form>
+                    <div class="border-top pt-3 mb-4">
+                       <small class="text-muted">
+                        Already Have an Account? <a clas="ml-2" href="{% url 'login' %}"> Sign In</a>
+                       </small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</body>
 
 {% endblock %}

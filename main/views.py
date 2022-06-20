@@ -24,7 +24,7 @@ class BusinessListView(ListView):
     model = Business
     template_name = 'business.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'businesses'
-    ordering = ['-date_posted']
+    ordering = ['-date_created']
 
 
 class ContactListView(ListView):

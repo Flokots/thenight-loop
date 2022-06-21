@@ -30,7 +30,7 @@ class Neighborhood(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('neighborhood-detail', kwargs={'slug': self.slug})
+        return reverse('neighborhoods')
 
     def save(self, *args, **kwargs):
         if self.date_created is None:
@@ -67,7 +67,7 @@ class Business(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('business-detail', kwargs={'slug': self.slug})
+        return reverse('businesss')
 
     def save(self, *args, **kwargs):
         if self.date_created is None:
@@ -103,7 +103,7 @@ class Post(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'slug': self.slug})
+        return reverse('post-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         if self.date_created is None:
@@ -141,7 +141,7 @@ class Contact(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('contact-detail', kwargs={'slug': self.slug})
+        return reverse('contacts')
 
     def save(self, *args, **kwargs):
         if self.date_created is None:

@@ -29,13 +29,20 @@ urlpatterns=[
     path('neighborhoods/', NeighborhoodListView.as_view(), name='neighborhoods'),
 
     # Create Views
-     path('post/new/', PostCreateView.as_view(), name='post-create'),
-     path('business/new/', BusinessCreateView.as_view(), name='business-create'),
-     path('contact/new/', ContactCreateView.as_view(), name='contact-create'),
-     path('neighborhood/new/', NeighborhoodCreateView.as_view(), name='neighborhood-create'),
+    path('post/new/', PostCreateView.as_view(), name='post-create'),
+    path('business/new/', BusinessCreateView.as_view(), name='business-create'),
+    path('contact/new/', ContactCreateView.as_view(), name='contact-create'),
+    path('neighborhood/new/', NeighborhoodCreateView.as_view(), name='neighborhood-create'),
 
     # Update Views
+    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
+    path('business/<int:pk>/update/', BusinessUpdateView.as_view(), name='business-update'),
+    path('contact/<int:pk>/update/', ContactUpdateView.as_view(), name='contact-update'),
+    path('neighborhood/<int:pk>/update/', NeighborhoodUpdateView.as_view(), name='neighborhood-update'),
 
     # Delete Views
-
+    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
+    path('business/<int:pk>/delete/', BusinessDeleteView.as_view(), name='business-delete'),
+    path('contact/<int:pk>/delete/', ContactDeleteView.as_view(), name='contact-delete'),
+    path('neighborhood/<int:pk>/delete/', NeighborhoodDeleteView.as_view(), name='neighborhood-delete'),
 ]

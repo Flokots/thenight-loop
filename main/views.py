@@ -48,7 +48,7 @@ class PostListView(ListView):
     template_name = 'index.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
-    paginate_by = 3
+    paginate_by = 2
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post

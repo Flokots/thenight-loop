@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<div class="container">
+    <form method="POST" class="pt-3"> 
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 pt-3 text-danger text-center">Delete Contact</legend>
+            <h2 class="">Are you sure you want to delete contact - {{object.title}}? </h2>
+            <button class="btn btn-outline-danger mb-3 mt-3" type="submit">Yes, Delete</button>
+            <a class="btn btn-outline-warning mb-3 mt-3" href="{% url 'contacts'%}">Cancel</a>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}

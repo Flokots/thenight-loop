@@ -67,7 +67,7 @@ class Business(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('businesss')
+        return reverse('business')
 
     def save(self, *args, **kwargs):
         if self.date_created is None:

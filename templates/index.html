@@ -33,7 +33,16 @@
   <body class="lo-body">
     <div class="container">
       <div class="darker-div">
-        <h2>Recent Neighbourhood Posts</h2>
+        <h2>
+          <span class="me-5 pe-5">
+            Recent Neighbourhood Posts
+          </span>
+          <a href="{% url 'post-create' %}" class="btn btn-outline-info me-2" >
+            Create a Post
+        </a>
+          
+        </h2>
+        
         <hr />
         {% if posts %}
         {% for post in posts %}

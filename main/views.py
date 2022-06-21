@@ -32,7 +32,7 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'post_detail.html' 
 
@@ -66,7 +66,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-class BusinessListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+class BusinessListView(LoginRequiredMixin,  ListView):
     model = Business
     template_name = 'business.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'businesses'
@@ -111,7 +111,7 @@ class BusinessDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-class ContactListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+class ContactListView(LoginRequiredMixin, ListView):
     model = Contact
     template_name = 'contact.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'contacts'
@@ -156,7 +156,7 @@ class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-class NeighborhoodListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+class NeighborhoodListView(LoginRequiredMixin, ListView):
     model = Neighborhood
     template_name = 'neighborhood.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'neighborhoods'

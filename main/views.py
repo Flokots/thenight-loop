@@ -101,7 +101,7 @@ class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class BusinessDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Business
-    success_url = '/'
+    success_url = '/business/'
 
     def test_func(self):
         business = self.get_object()
@@ -146,7 +146,7 @@ class ContactUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Contact
-    success_url = '/'
+    success_url = '/contacts/'
 
     def test_func(self):
         contact = self.get_object()
@@ -188,7 +188,7 @@ class NeighborhoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView
 
 class NeighborhoodDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Neighborhood
-    success_url = '/'
+    success_url = '/neighborhoods/'
 
     def test_func(self):
         neighborhood = self.get_object()

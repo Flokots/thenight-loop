@@ -45,4 +45,7 @@ urlpatterns=[
     path('business/<int:pk>/delete/', BusinessDeleteView.as_view(), name='business-delete'),
     path('contact/<int:pk>/delete/', ContactDeleteView.as_view(), name='contact-delete'),
     path('neighborhood/<int:pk>/delete/', NeighborhoodDeleteView.as_view(), name='neighborhood-delete'),
+
+    # Search
+    path('search/', views.search_results, name='search_results')
 ]

@@ -43,9 +43,9 @@
         <li><a href="{% url 'contacts' %}" class="nav-link px-2 text-white">SOS Contacts</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="">
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="{% url 'search_results' %}">
         <input type="search" class="form-control form-control-dark text-white bg-dark" placeholder="Search Businesses..."
-          aria-label="Search" name="project">
+          aria-label="Search" name="business">
           <!--Will add button if faulty-->
       </form>
 

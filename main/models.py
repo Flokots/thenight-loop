@@ -82,6 +82,14 @@ class Business(models.Model):
         super(Business, self).save(*args, **kwargs)
 
 
+    @classmethod
+    def search_by_name(cls,search_term):
+        businesses = cls.objects.filter(name__icontains=search_term)
+
+        return businesses
+
+
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()

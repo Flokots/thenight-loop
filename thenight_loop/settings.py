@@ -27,9 +27,7 @@ SECRET_KEY = 'django-insecure-=4gze4^geg_jui&fnp6)*vn@2w16v0@%!7z5@n7@qoiv9-z0ic
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-ROOT_URLCONF = 'thenight_loop.urls'
+ALLOWED_HOSTS = ['https://thenight-loop.herokuapp.com/', '0.0.0.0']
 
 
 # Application definition
@@ -146,14 +144,6 @@ LOGIN_URL = 'login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-MESSAGE_TAGS = {
-    messages.DEBUG: 'info',
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.WARNING: 'warning',
-    messages.ERROR: 'danger',
-}
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DJANGORESIZED_DEFAULT_SIZE = [500, 500]
@@ -161,3 +151,10 @@ DJANGORESIZED_DEFAULT_QUALITY = 75
 DJANGORESIZED_DEFAULT_KEEP_META = True
 DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
 DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'PNG': ".png"}
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
+
+
+CSRF_TRUSTED_ORIGINS = ['https://thenight-loop.herokuapp.com']

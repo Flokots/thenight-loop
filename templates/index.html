@@ -30,6 +30,7 @@
     </div>
   </header>
 
+  {% if user.is_authenticated %}
   <body class="lo-body">
     <div class="container">
       <div class="darker-div">
@@ -67,6 +68,7 @@
       </div>
     </div>
   </body>
+  {% endif %}
 </main>
 
 {% endblock %}

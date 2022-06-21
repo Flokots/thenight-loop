@@ -22,7 +22,7 @@ class PostListView(ListView):
     ordering = ['-date_posted']
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
     fields = ['title', 'description', 'post_image']
 
@@ -32,7 +32,7 @@ class PostCreateView(CreateView):
         return super().form_valid(form)
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Post
     template_name = 'post_detail.html' 
 
@@ -66,14 +66,14 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-class BusinessListView(ListView):
+class BusinessListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Business
     template_name = 'business.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'businesses'
     ordering = ['-date_created']
 
 
-class BusinessCreateView(CreateView):
+class BusinessCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Business
     fields = ['name', 'email_address', 'business_image']
 
@@ -111,14 +111,14 @@ class BusinessDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-class ContactListView(ListView):
+class ContactListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Contact
     template_name = 'contact.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'contacts'
     ordering = ['-date_posted']
 
 
-class ContactCreateView(CreateView):
+class ContactCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Contact
     fields = ['title', 'description', 'phone_number', 'email_address']
 
@@ -156,14 +156,14 @@ class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-class NeighborhoodListView(ListView):
+class NeighborhoodListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Neighborhood
     template_name = 'neighborhood.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'neighborhoods'
     ordering = ['-date_created']
 
 
-class NeighborhoodCreateView(CreateView):
+class NeighborhoodCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Neighborhood
     fields = ['name', 'location', 'occupants_count', 'hood_image']
 

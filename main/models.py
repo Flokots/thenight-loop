@@ -45,6 +45,15 @@ class Neighborhood(models.Model):
         super(Neighborhood, self).save(*args, **kwargs)
 
 
+          
+    @classmethod
+    def search_hood_by_name(cls, search_term):
+        hoods = cls.objects.filter(name__icontains=search_term)
+
+        return hoods
+
+
+
 
 class Business(models.Model):
     name = models.CharField(null=True, blank=True, max_length=200)
@@ -87,8 +96,6 @@ class Business(models.Model):
         businesses = cls.objects.filter(name__icontains=search_term)
 
         return businesses
-
-
 
 class Post(models.Model):
     title = models.CharField(max_length=100)

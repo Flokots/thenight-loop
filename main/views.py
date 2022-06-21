@@ -28,6 +28,21 @@ def search_results(request):
         return render(request, 'search.html', {'message': message})
 
 
+def search_hood_results(request):
+    if 'hood' in request.GET and request.GET['hood']:
+        search_term = request.GET.get('hood')
+        searched_hoods = Neighborhood.search_hood_by_name(search_term)
+
+        message = f'{search_term}'
+
+        return render(request, 'search_hood.html', {'message': message, 'hoods': searched_hoods})
+
+    else:
+        message = "You haven't searched for any hood"
+        return render(request, 'search_hood.html', {'message': message})
+
+
+
 class PostListView(ListView):
     model = Post
     template_name = 'index.html' # Expected </app>/<model>_<viewtype>.html

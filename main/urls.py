@@ -47,5 +47,6 @@ urlpatterns=[
     path('neighborhood/<int:pk>/delete/', NeighborhoodDeleteView.as_view(), name='neighborhood-delete'),
 
     # Search
-    path('search/', views.search_results, name='search_results')
+    path('search/', views.search_results, name='search_results'),
+    path('search-hood/', views.search_hood_results, name='search_hood_results'),
 ]

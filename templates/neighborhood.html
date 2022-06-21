@@ -46,6 +46,17 @@
                                 </div>
                             </div>
                             <img src="{{neighborhood.hood_image.url}}" alt="neighborhood image">
+                            {% if neighborhood.admin == user %}
+
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'neighborhood-update' neighborhood.id %}">Update</a>
+                                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'neighborhood-delete' neighborhood.id %}">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}

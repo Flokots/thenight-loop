@@ -43,6 +43,17 @@
                 </div>
               </div>
               <img src="{{business.business_image.url}}" alt="business image">
+              {% if business.owner == user %}
+
+              <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                          <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'business-update' business.id %}">Update</a>
+                          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'business-delete' business.id %}">Delete</a>
+                      </div>
+                  </div>
+              </div>
+              {% endif %}
             </div>
           </div>
           {% endif %}

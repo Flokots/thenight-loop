@@ -22,7 +22,7 @@ class PostListView(ListView):
     ordering = ['-date_posted']
 
 
-class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'description', 'post_image']
 
@@ -73,7 +73,7 @@ class BusinessListView(LoginRequiredMixin,  ListView):
     ordering = ['-date_created']
 
 
-class BusinessCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class BusinessCreateView(LoginRequiredMixin, CreateView):
     model = Business
     fields = ['name', 'email_address', 'business_image']
 
@@ -118,7 +118,7 @@ class ContactListView(LoginRequiredMixin, ListView):
     ordering = ['-date_posted']
 
 
-class ContactCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class ContactCreateView(LoginRequiredMixin, CreateView):
     model = Contact
     fields = ['title', 'description', 'phone_number', 'email_address']
 
@@ -163,7 +163,7 @@ class NeighborhoodListView(LoginRequiredMixin, ListView):
     ordering = ['-date_created']
 
 
-class NeighborhoodCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class NeighborhoodCreateView(LoginRequiredMixin, CreateView):
     model = Neighborhood
     fields = ['name', 'location', 'occupants_count', 'hood_image']
 

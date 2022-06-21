@@ -5,81 +5,86 @@
 {{ block.super }}
 
 <body class="lo-body">
-  <div class="container darker-div">
-    <div class="album py-5" id="projects">
-      <div class="container">
-        <h3 class="border-bottom mb-4 pt-3 text-center">Businesses in Your Neighborhood</h3>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {% if businesses %}
-          {% for business in businesses %}
-          {% if business.neighborhood == user.profile.neighborhood %}
-          <div class="col">
-            <div class="card shadow-sm album-card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-3">
-                    <a href="">
-                      <img class="rounded-circle project-img" src="{{ business.owner.profile.image.url}}">
-                    </a>
-                  </div>
-                  <div class="col-9">
-                    <h5 class="card-title text-center">
-                      <a class="text-mutedi" href="">{{business.name}}</a>
-                    </h5>
-                  </div>
-                  <div>
-                    <div class="text-center">
-                      <small class="text-muted text-center">
-                        Owned by <b>{{ business.owner}} </b><br/>
-                      </small>
-                      <small class="text-muted text-center">
-                        Email Address: {{ business.email_address}}
-                      </small>
+    <div class="container darker-div">
+        <div class="album py-5" id="projects">
+            <div class="container">
+                <h3 class="border-bottom mb-4 pt-3 text-center">SOS Contacts in Your Neighborhood</h3>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% if contacts %}
+                    {% for contact in contacts %}
+                    {% if contact.neighborhood == user.profile.neighborhood %}
+                    <div class="col">
+                        <div class="card shadow-sm album-card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <a href="">
+                                            <img class="rounded-circle project-img"
+                                                src="{{ contact.author.profile.image.url}}">
+                                        </a>
+                                    </div>
+                                    <div class="col-9">
+                                        <h5 class="card-title text-center">{{contact.title}}</h5>
+                                    </div>
+                                    <div>
+                                        <div class="text-center">
+                                            <small class="text-muted text-center">
+                                                Posted by <b>{{ contact.author }} </b><br />
+                                                on {{contact.date_posted}}
+                                            </small>
+                                            <p class="text-center">
+                                                Email Address: {{ contact.email_address}}<br />
+                                            </p>
+                                            <p class="text-center">
+                                                Phone Number: {{contact.phone_number }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{business.description}}</p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <h2>There are no SOS contacts in your neighborhood</h2>
+                    {% endif %}
                 </div>
-              </div>
-              <img src="{{business.business_image.url}}" alt="business image">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="py-3 col-7">
+                        {% if is_paginated %}
+
+                        {% if page_obj.has_previous %}
+                        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                        <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
+                            class="btn btn-outline-info mb-4" href="?page={{num}}"> {{ num }} </a>
+                            {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number }}">Next</a>
+                            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Last</a>
+                            {% endif %}
+
+                            {% endif %}
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+
             </div>
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% else %}
-          <h2>There are no businesses in your neighborhood</h2>
-          {% endif %}
         </div>
-        <div class="row">
-          <div class="col-3"></div>
-          <div class="py-3 col-7">
-            {% if is_paginated %}
-  
-            {% if page_obj.has_previous %}
-            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
-            {% endif %}
-  
-            {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-            <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
-              class="btn btn-outline-info mb-4" href="?page={{num}}"> {{ num }} </a>
-              {% endif %}
-              {% endfor %}
-  
-              {% if page_obj.has_next %}
-              <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number }}">Next</a>
-              <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Last</a>
-              {% endif %}
-  
-              {% endif %}
-          </div>
-          <div class="col-2"></div>
-        </div>
-  
-      </div>
+
     </div>
-  
-  </div>
 </body>
 
 {% endblock %}

@@ -153,5 +153,5 @@ class Contact(models.Model):
 
         self.slug = slugify('{} {}'.format(self.title, self.uniqueId))
         self.last_updated = timezone.localtime(timezone.now())
-        super(Post, self).save(*args, **kwargs)
+        super(Contact, self).save(*args, **kwargs)
 

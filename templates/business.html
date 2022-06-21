@@ -18,23 +18,19 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-3">
-                    <a href="">
                       <img class="rounded-circle project-img" src="{{ business.owner.profile.image.url}}">
-                    </a>
                   </div>
                   <div class="col-9">
-                    <h5 class="card-title text-center">
-                      <a class="text-mutedi" href="">{{business.name}}</a>
-                    </h5>
+                    <h5 class="card-title text-center">{{business.name}}</h5>
                   </div>
                   <div>
                     <div class="text-center">
-                      <small class="text-muted text-center">
+                      <p class="text-center">
                         Owned by <b>{{ business.owner}} </b><br/>
-                      </small>
-                      <small class="text-muted text-center">
+                      </p>
+                      <p class="text-center">
                         Email Address: {{ business.email_address}}
-                      </small>
+                      </p>
                     </div>
                   </div>
                 </div>

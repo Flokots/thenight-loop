@@ -53,8 +53,6 @@ class Neighborhood(models.Model):
         return hoods
 
 
-
-
 class Business(models.Model):
     name = models.CharField(null=True, blank=True, max_length=200)
     email_address = models.EmailField()

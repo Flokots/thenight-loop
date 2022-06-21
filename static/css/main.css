@@ -59,7 +59,7 @@
 
 body {
   font-family: 'Nuosu SIL', serif !important;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 
@@ -112,9 +112,9 @@ body {
 }
 
 .content {
-  height: 140px;
+  height: 150px;
   left: 279px;
-  top: 125px;
+  top: 150px;
   font-family: 'Darker Grotesque';
   font-style: normal;
   font-weight: 400;

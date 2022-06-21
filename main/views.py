@@ -156,6 +156,13 @@ class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
+class NeighborhoodListView(ListView):
+    model = Neighborhood
+    template_name = 'neighborhood.html' # Expected </app>/<model>_<viewtype>.html
+    context_object_name = 'neighborhoods'
+    ordering = ['-date_created']
+
+
 class NeighborhoodCreateView(CreateView):
     model = Neighborhood
     fields = ['name', 'location', 'occupants_count', 'hood_image']

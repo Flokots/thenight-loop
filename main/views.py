@@ -48,7 +48,7 @@ class PostListView(ListView):
     template_name = 'index.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
-
+    paginate_by = 3
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -99,6 +99,7 @@ class BusinessListView(LoginRequiredMixin,  ListView):
     template_name = 'business.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'businesses'
     ordering = ['-date_created']
+    paginate_by = 3
 
 
 class BusinessCreateView(LoginRequiredMixin, CreateView):
@@ -144,6 +145,7 @@ class ContactListView(LoginRequiredMixin, ListView):
     template_name = 'contact.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'contacts'
     ordering = ['-date_posted']
+    paginate_by = 3
 
 
 class ContactCreateView(LoginRequiredMixin, CreateView):
@@ -189,6 +191,7 @@ class NeighborhoodListView(LoginRequiredMixin, ListView):
     template_name = 'neighborhood.html' # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'neighborhoods'
     ordering = ['-date_created']
+    paginate_by = 3
 
 
 class NeighborhoodCreateView(LoginRequiredMixin, CreateView):

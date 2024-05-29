@@ -1,99 +1,105 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-{{ block.super }}
+    {{ block.super }}
 
-<body class="lo-body">
-  <div class="container darker-div">
-    <div class="album py-5" id="projects">
-      <div class="container">
-        <h2 class="border-bottom mb-4 pt-3 text-center p-2">
+    <body class="lo-body">
+    <div class="container darker-div">
+        <div class="album py-5" id="projects">
+            <div class="container">
+                <h2 class="border-bottom mb-4 pt-3 text-center p-2">
           <span class="me-5 pe-5">
             Businesses in Your Neighborhood
           </span>
-          <a href="{% url 'business-create' %}" class="btn btn-outline-info me-2" >
-            Add a Business
-        </a>
-        </h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {% if businesses %}
-          {% for business in businesses %}
-          {% if business.neighborhood == user.profile.neighborhood %}
-          <div class="col">
-            <div class="card shadow-sm album-card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-3">
-                      <img class="rounded-circle project-img" src="{{ business.owner.profile.image.url}}">
-                  </div>
-                  <div class="col-9">
-                    <h5 class="card-title text-center">{{business.name}}</h5>
-                  </div>
-                  <div>
-                    <div class="text-center">
-                      <p class="text-center">
-                        Owned by <b>{{ business.owner}} </b><br/>
-                      </p>
-                      <p class="text-center">
-                        Email Address: {{ business.email_address}}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <img src="{{business.business_image.url}}" alt="business image">
-              {% if business.owner == user %}
+                    <a href="{% url 'business-create' %}" class="btn btn-outline-info me-2">
+                        Add a Business
+                    </a>
+                </h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% if businesses %}
+                        {% for business in businesses %}
+                            {% if business.neighborhood == user.profile.neighborhood %}
+                                <div class="col">
+                                    <div class="card shadow-sm album-card">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <img class="rounded-circle project-img"
+                                                         src="{{ business.owner.profile.image.url }}">
+                                                </div>
+                                                <div class="col-9">
+                                                    <h5 class="card-title text-center">{{ business.name }}</h5>
+                                                </div>
+                                                <div>
+                                                    <div class="text-center">
+                                                        <p class="text-center">
+                                                            Owned by <b>{{ business.owner }} </b><br/>
+                                                        </p>
+                                                        <p class="text-center">
+                                                            Email Address: {{ business.email_address }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ business.business_image.url }}" alt="business image">
+                                        {% if business.owner == user %}
 
-              <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                          <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'business-update' business.id %}">Update</a>
-                          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'business-delete' business.id %}">Delete</a>
-                      </div>
-                  </div>
-              </div>
-              {% endif %}
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-outline-info btn-sm mt-1 mb-1"
+                                                           href="{% url 'business-update' business.id %}">Update</a>
+                                                        <a class="btn btn-danger btn-sm mt-1 mb-1"
+                                                           href="{% url 'business-delete' business.id %}">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        <div>
+                            <p class="text-info">There are no businesses. Add one!</p>
+                        </div>
+                    {% endif %}
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="py-3 col-7">
+                        {% if is_paginated %}
+
+                            {% if page_obj.has_previous %}
+                                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
+                                        class="btn btn-outline-info mb-4" href="?page={{ num }}"> {{ num }} </a>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <a class="btn btn-outline-info mb-4"
+                                   href="?page={{ page_obj.next_page_number }}">Next</a>
+                                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                            {% endif %}
+
+                        {% endif %}
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+
             </div>
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% else %}
-          <h2>There are no businesses in your neighborhood</h2>
-          {% endif %}
         </div>
-        <div class="row">
-          <div class="col-3"></div>
-          <div class="py-3 col-7">
-            {% if is_paginated %}
-  
-            {% if page_obj.has_previous %}
-            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
-            {% endif %}
-  
-            {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-            <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
-              class="btn btn-outline-info mb-4" href="?page={{num}}"> {{ num }} </a>
-              {% endif %}
-              {% endfor %}
-  
-              {% if page_obj.has_next %}
-              <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number }}">Next</a>
-              <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Last</a>
-              {% endif %}
-  
-              {% endif %}
-          </div>
-          <div class="col-2"></div>
-        </div>
-  
-      </div>
+
     </div>
-  
-  </div>
-</body>
+    </body>
 
 {% endblock %}

@@ -78,6 +78,12 @@
     margin-right: 16px;
 }
 
+.post-img {
+    height: auto;
+    width: 536px;
+
+}
+
 
 .masthead {
     position: relative;

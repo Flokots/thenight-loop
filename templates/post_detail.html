@@ -1,16 +1,13 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block content %}
-{{block.super}}
+    {{ block.super }}
 
-
-<body class="lo-body">
     <div class="container darker-div">
         <section class="py-5">
-            <img class="center-items py-5" src="{{object.post_image.url}}"
-                style="width: 536px; height: 322px">
+            <img class="center-items py-5 post-img" src="{{ object.post_image.url }}" alt=""/>
             <div class="text-center  mb-4">
-                <h2 class="article-title">{{object.title}}</h2>
+                <h2 class="article-title">{{ object.title }}</h2>
                 <small class="text-mutedi">By <a class="text-mutedi" href="">{{ object.author }}</a></small>
             </div>
             <div>
@@ -20,30 +17,27 @@
                 <div class="text-center">
                     <div>
                         <a href="">
-                            <img class="rounded-circle project-img" src="{{object.author.profile.image.url}}">
+                            <img class="rounded-circle project-img" src="{{ object.author.profile.image.url }}" alt="">
                         </a>
                     </div>
                     <div class="text-center">
                         <small class="text-muted"> Posted {{ object.date_posted|timesince }} ago by
-                            <a class="mr-2" href="">
-                                {{ object.author }}
-                            </a>
+                            {{ object.author }}
                         </small>
                     </div>
                 </div>
                 {% if object.author == user %}
-                <div class="mt-3 row">
-                    <div class="col-5"></div>
-                    <div class="col-4">
-                        <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
-                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+                    <div class="mt-3 row">
+                        <div class="col-5"></div>
+                        <div class="col-4">
+                            <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1"
+                               href="{% url 'post-delete' object.id %}">Delete</a>
+                        </div>
+                        <div class="col-3"></div>
                     </div>
-                    <div class="col-3"></div>
-                </div>
                 {% endif %}
             </div>
         </section>
     </div>
-</main>
-
 {% endblock content %}

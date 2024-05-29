@@ -2,17 +2,19 @@ from django.shortcuts import render
 from .models import Post, Business, Contact, Neighborhood
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
-    ListView, 
+    ListView,
     DetailView,
     CreateView,
     UpdateView,
     DeleteView,
 )
 
+
 # Create your views here.
 def index(request):
-    title='Home'
+    title = 'Home'
     return render(request, 'index.html', {'title': title})
+
 
 def search_results(request):
     if 'business' in request.GET and request.GET['business']:
@@ -42,13 +44,13 @@ def search_hood_results(request):
         return render(request, 'search_hood.html', {'message': message})
 
 
-
 class PostListView(ListView):
     model = Post
-    template_name = 'index.html' # Expected </app>/<model>_<viewtype>.html
+    template_name = 'index.html'  # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 2
+
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -62,7 +64,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
-    template_name = 'post_detail.html' 
+    template_name = 'post_detail.html'
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -92,11 +94,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-
-
-class BusinessListView(LoginRequiredMixin,  ListView):
+class BusinessListView(LoginRequiredMixin, ListView):
     model = Business
-    template_name = 'business.html' # Expected </app>/<model>_<viewtype>.html
+    template_name = 'business.html'  # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'businesses'
     ordering = ['-date_created']
     paginate_by = 3
@@ -116,7 +116,7 @@ class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Business
     fields = ['name', 'email_address', 'business_image']
 
-    def form_valid(self, form):   
+    def form_valid(self, form):
         form.instance.owner = self.request.user
         form.instance.neighborhood = self.request.user.profile.neighborhood
         return super().form_valid(form)
@@ -139,10 +139,9 @@ class BusinessDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-
 class ContactListView(LoginRequiredMixin, ListView):
     model = Contact
-    template_name = 'contact.html' # Expected </app>/<model>_<viewtype>.html
+    template_name = 'contact.html'  # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'contacts'
     ordering = ['-date_posted']
     paginate_by = 3
@@ -150,7 +149,7 @@ class ContactListView(LoginRequiredMixin, ListView):
 
 class ContactCreateView(LoginRequiredMixin, CreateView):
     model = Contact
-    fields = ['title', 'description', 'phone_number', 'email_address']
+    fields = ['title', 'phone_number', 'email_address', 'description']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -160,9 +159,9 @@ class ContactCreateView(LoginRequiredMixin, CreateView):
 
 class ContactUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Contact
-    fields = ['title', 'description', 'phone_number', 'email_address']
+    fields = ['title', 'phone_number', 'email_address', 'description']
 
-    def form_valid(self, form):   
+    def form_valid(self, form):
         form.instance.author = self.request.user
         form.instance.neighborhood = self.request.user.profile.neighborhood
         return super().form_valid(form)
@@ -185,10 +184,9 @@ class ContactDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-
 class NeighborhoodListView(LoginRequiredMixin, ListView):
     model = Neighborhood
-    template_name = 'neighborhood.html' # Expected </app>/<model>_<viewtype>.html
+    template_name = 'neighborhood.html'  # Expected </app>/<model>_<viewtype>.html
     context_object_name = 'neighborhoods'
     ordering = ['-date_created']
     paginate_by = 3
@@ -202,11 +200,12 @@ class NeighborhoodCreateView(LoginRequiredMixin, CreateView):
         form.instance.admin = self.request.user
         return super().form_valid(form)
 
+
 class NeighborhoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Neighborhood
     fields = ['name', 'location', 'occupants_count', 'hood_image']
 
-    def form_valid(self, form):   
+    def form_valid(self, form):
         form.instance.admin = self.request.user
         return super().form_valid(form)
 

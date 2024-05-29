@@ -35,13 +35,12 @@
             <div class="container">
                 <div class="darker-div">
                     <h2>
-          <span class="me-5 pe-5">
-            Recent Neighbourhood Posts
-          </span>
+                      <span class="me-5 pe-5">
+                        Recent Neighbourhood Posts
+                      </span>
                         <a href="{% url 'post-create' %}" class="btn btn-outline-info me-2">
                             Create a Post
                         </a>
-
                     </h2>
 
                     <hr/>
@@ -51,17 +50,16 @@
                             {% if post.neighborhood == user.profile.neighborhood %}
                                 <div class="article-card">
                                     <article class="media content-section">
-                                        <img class="rounded-circle article-img"
-                                             src="{{ post.author.profile.image.url }}">
-                                        <div class="media-body">
-                                            <div class="article-metadata">
+                                        <div>
+                                            <h3>
+                                                <a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
+                                            </h3>
+                                            <p class="article-content">{{ post.description|truncatechars:300 }}</p>
+                                        </div>
+                                        <div class="article-metadata">
                                                 <a class="mr-2" href="#">{{ post.author }}</a>
                                                 <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                                             </div>
-                                            <h2><a class="article-title"
-                                                   href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-                                            <p class="article-content">{{ post.description|truncatechars:300 }}</p>
-                                        </div>
                                     </article>
                                 </div>
                             {% endif %}

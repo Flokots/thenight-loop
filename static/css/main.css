@@ -229,8 +229,10 @@
     margin-bottom: 20px;
 }
 
-.article-title {
-    color: #444444;
+
+a.article-title {
+    text-decoration: none;
+
 }
 
 a.article-title:hover {

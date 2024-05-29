@@ -20,8 +20,7 @@ As a user, I would like to:
 
 ### Technologies and Dependencies Used
 * Django
-* Python
-* Heroku
+* Python3.10.4
   
 ### Project Setup
 1. Clone this repository.
@@ -33,18 +32,17 @@ As a user, I would like to:
    ```
 5. Create the database
    ```
-   $ python
    >>> psql;
    >>> CREATE DATABASE database_name;
    ```
 6. In the `settings.py` update the database configurations.
 7. Make initial migrations 
    ```
-   python manage.py makemigrations main
-   python manage.py manage.py migrate
+   python3 manage.py makemigrations main
+   python3 manage.py migrate
    ```
-8. Run `python manage.py runserver` to run the application locally. View the app on the `localhost:8000'
-9. Run `python manage.py test main` to run the tests.
+8. Run `python3 manage.py runserver` to run the application locally. View the app on the `localhost:8000'
+9. Run `python3 manage.py test main` to run the tests.
 10. Have fun exploring!
   
 ### Contributions

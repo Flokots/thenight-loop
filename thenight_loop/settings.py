@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'thenight_loop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'thenight_loop',
-        'USER': 'flo',
-        'PASSWORD': 'flo',
+        'NAME': 'thenightloop',
+        'USER': 'wintersunbirdie',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Africa/Nairobi'
+TIME_ZONE = 'Europe/Budapest'
 
 USE_I18N = True
 
